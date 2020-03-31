@@ -1,24 +1,64 @@
-let num = 266219;
-const lengthOfNum = num.toString().length;
+//Сложное задание к третьему уроку
+let lang = "en";
 
-let numOfNun;
-let des = 1;
+let rusDays = [
+  " Понедельник",
+  " Вторник",
+  " Среда",
+  " Четверг",
+  " Пятница",
+  " Суббота",
+  " Воскрессенье"
+];
 
-let compliteNum = 1;
+let englishDays = [
+  " Monday",
+  " Thursday",
+  " Wedneday",
+  " Thersday",
+  " Friday",
+  " Saturday",
+  " Sunday"
+];
 
-let result;
+//Через IF
 
-for (let i = 0; i < lengthOfNum; i++) {
-  numOfIndex = Math.floor((num / des) % 10);
-  compliteNum *= numOfIndex;
-
-  des *= 10;
+if (lang === "ru") {
+  console.log("Способ первый: " + rusDays);
+} else if (lang === "en") {
+  console.log("Способ первый: " + englishDays);
+} else {
+  console.log("Способ первый: " + "Вы явно ошиблись страной");
 }
 
-compliteNum **= 3;
+//Через SWITCH
 
-let compliteNumStr = compliteNum.toString();
-let compliteNumLen = compliteNumStr.length;
-result = compliteNumStr.slice(compliteNumLen - compliteNumLen, 2);
+switch (lang) {
+  case "ru":
+    console.log("Способ Второй: " + rusDays);
+    break;
+  case "en":
+    console.log("Способ Второй: " + englishDays);
+    break;
+  default:
+    console.log("Способ второй: " + "Вы явно ошиблись страной");
+}
 
-alert(result);
+//Массив
+
+let langArr = [];
+langArr["ru"] = rusDays;
+langArr["en"] = englishDays;
+
+console.log("Способ третий " + langArr[lang]);
+
+
+//Артем и Макс
+
+let namePerson = "Максим";
+
+namePerson === "Артем"
+  ? console.log("директор")
+  : namePerson === "Максим"
+  ? console.log("преподаватель")
+  : console.log("студент");
