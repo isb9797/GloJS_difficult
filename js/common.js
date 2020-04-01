@@ -1,64 +1,28 @@
-//Сложное задание к третьему уроку
-let lang = "en";
+//Сложное задание к четвертому уроку
+"use strict";
 
-let rusDays = [
-  " Понедельник",
-  " Вторник",
-  " Среда",
-  " Четверг",
-  " Пятница",
-  " Суббота",
-  " Воскрессенье"
-];
+let strInput = prompt("Введите строку и посмотрите в консоль");
 
-let englishDays = [
-  " Monday",
-  " Thursday",
-  " Wedneday",
-  " Thersday",
-  " Friday",
-  " Saturday",
-  " Sunday"
-];
+let strFunc = argument => {
+  let type = +argument * 10;
 
-//Через IF
+  let str = "";
 
-if (lang === "ru") {
-  console.log("Способ первый: " + rusDays);
-} else if (lang === "en") {
-  console.log("Способ первый: " + englishDays);
-} else {
-  console.log("Способ первый: " + "Вы явно ошиблись страной");
-}
+  if (!isNaN(type)) {
+    console.log(
+      "Вы уверены, что написали предложение? Это больше похоже на число. Читайте внимательно)"
+    );
+  } else {
+    str = argument.trim();
+    let subStr = "";
 
-//Через SWITCH
+    if (str.length > 30) {
+      subStr = str.substr(0, 30) + " ...";
+      console.log(subStr);
+    } else {
+      console.log(str);
+    }
+  }
+};
 
-switch (lang) {
-  case "ru":
-    console.log("Способ Второй: " + rusDays);
-    break;
-  case "en":
-    console.log("Способ Второй: " + englishDays);
-    break;
-  default:
-    console.log("Способ второй: " + "Вы явно ошиблись страной");
-}
-
-//Массив
-
-let langArr = [];
-langArr["ru"] = rusDays;
-langArr["en"] = englishDays;
-
-console.log("Способ третий " + langArr[lang]);
-
-
-//Артем и Макс
-
-let namePerson = "Максим";
-
-namePerson === "Артем"
-  ? console.log("директор")
-  : namePerson === "Максим"
-  ? console.log("преподаватель")
-  : console.log("студент");
+strFunc(strInput);
