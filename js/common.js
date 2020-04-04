@@ -1,47 +1,57 @@
-//Сложное задание к пятому уроку
+//Сложное задание к седьмому уроку
 "use strict";
 
-function arrayWork() {
-  const arrMehods = {
-    //Можно вводить и вручную, но я решил, что так быстрее)
-    arr: ["8503", "255452", "322515", "411212", "45455", "54546", "546547", "6543", "5481", "834"],
+function week() {
+  const outWeek = {
+    week: [
+      "Понедельник",
+      "Вторник",
+      "Среда",
+      "Четверг",
+      "Пятница",
+      "Суббота",
+      "Воскресенье",
+    ],
+    allDaysInStr: function () {
+      let weekInc = this.week + "";
+      let splitWeekDays = weekInc.split(" ") + "";
+      //Использовал регулярное выражение для глобального поиска по стороке
+      splitWeekDays = splitWeekDays.replace(/,/g, " ");
+      return splitWeekDays;
+    },
+    allDaysInColumn: function () {
+      let newDays = [];
+      newDays = this.week.slice();
 
-    arraySlice: function () {
-      let sliceArrItem;
+      newDays[5] = "<i>" + "Суббота" + "</i>";
+      newDays[6] = "<i>" + "Воскресенье" + "</i>";
 
-      for (let i in this.arr) {
-        sliceArrItem = this.arr[i];
-        sliceArrItem = +sliceArrItem.slice(0, 1);
+      //let sunItalic = newDays.pop('Суббота')
 
-        if (sliceArrItem === 2 || sliceArrItem === 4) {
-          console.log(this.arr[i]);
-        }
+      for (let Day of newDays) {
+        console.log(Day);
       }
     },
-    arrayNatural: function () {
-      let arrNat;
+    getToDay: function () {
+      //Тут подвох - неделя начинается с воскрессенья)
+      let newDays = [];
+      newDays = this.week.slice();
 
-      for (let num = 0; num <= 100; num++) {
-        // arrNat = +this.arr[i];
+      newDays.splice(6, 1); //Удаляем воскресенье с конца ...
+      newDays.unshift("Воскресенье"); //... и ставим в начало
 
-        nextPrime: for (let j = 2; j <= num; j++) {
-          for (let k = 2; k < num; k++) {
-            if (j % k === 0) {
-              continue nextPrime;
-            }
-          }
-          console.log(num + ":    " + "Делители: " + j + ", " + 1);
-        }
-      }
+      let date = new Date();
+      let n = date.getDay();
+      console.log("Сегодня: \n");
+      console.log("<b>" + newDays[n] + "</b>");
     },
   };
 
-  //Вывод числел, начинающихся с 2 и 4
-  arrMehods.arraySlice();
+  console.log(outWeek.allDaysInStr() + "\n");
 
-  console.log("Простые числа");
+  outWeek.allDaysInColumn();
 
-  arrMehods.arrayNatural();
+  outWeek.getToDay();
 }
 
-arrayWork();
+week();
